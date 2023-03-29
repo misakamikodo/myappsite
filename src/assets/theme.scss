@@ -1,0 +1,148 @@
+//必须分两个，因为定义的scss会在每次prependData都会引入
+@import "properties";
+/*修改系统演示*/
+html, body {
+  margin: 0;
+  padding: 0;
+  font-size: 18px;
+  color: #6c767d;
+  background-color: #ebf1f5;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100%;
+}
+
+a {
+  text-decoration: none;
+}
+
+
+/*定义滚动条高宽及背景 高宽分别对应横竖滚动条的尺寸*/
+
+::-webkit-scrollbar {
+  width: 5px;
+  /* height: 5px; */
+  background-color: #F5F5F5;
+}
+
+
+/*定义滚动条轨道 内阴影+圆角*/
+
+::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+  background-color: #F5F5F5;
+}
+
+
+/*定义滑块 内阴影+圆角*/
+
+::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, .3);
+  background-color: #555;
+}
+
+h1 {
+  font-size: 36px;
+  margin-bottom: .5em;
+}
+
+h2 {
+  font-size: 24px;
+}
+
+h3 {
+  font-size: 20px;
+  margin-top: 1em;
+}
+
+h4 {
+  font-size: 16px;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  color: black;
+}
+
+strike {
+  color: red;
+}
+
+footer p {
+  font-size: 12px;
+}
+
+@media (max-width: 1199px) {
+  h1 {
+    font-size: 24px;
+  }
+  h2,
+  .social .fa {
+    font-size: 20px;
+  }
+  h3 {
+    font-size: 16px;
+  }
+  h4,
+  p {
+    font-size: 14px;
+  }
+}
+
+.justify-content-center {
+  -ms-flex-pack: center !important;
+  justify-content: center !important;
+}
+
+.fab, .far {
+  font-weight: 400;
+}
+
+.fab {
+  font-family: "Font Awesome 5 Brands";
+}
+
+.fa, .fab, .fad, .fal, .far, .fas {
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  display: inline-block;
+  font-style: normal;
+  font-variant: normal;
+  text-rendering: auto;
+  line-height: 1;
+}
+
+.btn {
+  border: none;
+  margin: 5px 0;
+  width: 100%;
+  padding: 12px 0;
+  transition: ease;
+}
+
+.btn-primary {
+  color: #fff;
+  background-color: $color-normal;
+  border-color: $color-normal;
+}
+
+.btn-warm {
+  color: #fff;
+  background-color: #ffc107;
+  border-color: #ffc107;
+}
+
+.btn-danger {
+  color: #fff;
+  background-color: $color-error;
+  border-color: $color-error;
+}
+
+.btn-primary:hover {
+  box-shadow: 5px -2px 15px 0px rgb(203, 221, 232);
+}
