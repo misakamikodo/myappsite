@@ -26,20 +26,20 @@
       </div>
       <el-form ref="shoujuePriceForm">
         <el-form-item label="兽决价格列表" >
-          <el-input class="text-input" type="text" v-model="shoujueSpend.prices"
+          <el-input class="text-input" type="text" v-model="shoujueFee.prices"
                     placeholder="请输入价格，英文逗号(,)分割"></el-input>
         </el-form-item>
         <el-form-item label="特殊技能数" >
-          <el-input-number type="number" min="0" max="12" step="1" size="small" v-model="shoujueSpend.specials"
+          <el-input-number type="number" min="0" max="12" step="1" size="small" v-model="shoujueFee.specials"
                            placeholder="请输入内容"></el-input-number>
         </el-form-item>
         <el-form-item label="初始打书二进制状态" >
-          <el-input class="small-text-input" width="200" type="text" v-model="shoujueSpend.initStatus"
+          <el-input class="small-text-input" width="200" type="text" v-model="shoujueFee.initStatus"
                     placeholder="对应输入兽决价格 1有0无"></el-input>
         </el-form-item>
       </el-form>
       <div class="text item">
-        结果：成功花费：{{ shoujue.spend }}，打成概率：{{ shoujue.rate }} %
+        结果：成功花费：{{ shoujueFee.spend }}，打成概率：{{ shoujueFee.rate }} %
       </div>
     </el-card>
   </div>
@@ -55,7 +55,7 @@ export default {
         okNum: 0,
         result: 0
       },
-      shoujueSpend: {
+      shoujueFee: {
         initStatus: "0000",
         rate: 0,
         spend: 0,
