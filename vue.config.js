@@ -6,7 +6,7 @@ module.exports = {
     css: {
         loaderOptions: {
             scss: {
-                prependData: `@import "~@/assets/properties.scss";`
+                additionalData: `@import "~@/assets/properties.scss";`
             },
             less: {
                 globalVars: {
