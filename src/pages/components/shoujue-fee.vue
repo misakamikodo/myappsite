@@ -10,7 +10,8 @@
                   placeholder="请输入价格，英文逗号(,)分割"></el-input>
       </el-form-item>
       <el-form-item label="特殊技能数">
-        <el-input-number type="number" :min="0" :max="12" :step="1" size="small" v-model="formData.specials" @change="pricesChange"
+        <el-input-number type="number" :min="0" :max="12" :step="1" size="small" v-model="formData.specials"
+                         @change="pricesChange"
                          placeholder="请输入内容"></el-input-number>
       </el-form-item>
       <el-form-item label="格子数">
@@ -71,7 +72,8 @@ export default {
         specials: 0,
         num: 4,
         initStatus: "0000"
-      }
+      },
+      priceCacheArr: []
     }
   },
   methods: {
@@ -80,25 +82,48 @@ export default {
       this.formData.num = priceArr.length + this.formData.specials;
       this.formData.initStatus = "0".repeat(priceArr.length);
     },
-    avgFee(pricesArr, doneNum) {
-      let cacheMap = {}
-
-      function dfs(pricesArr, doneNum) {
-        for (let i = 0; i < pricesArr.length; i++) {
-          let pointer = (doneNum >> i) % 2;
-          console.log(doneNum & (pointer << i));
+    avgFee(pricesArr, doneStatusNum, depth = 0) {
+      const len = pricesArr.length;
+      let result = 0
+      let curStatusNum = doneStatusNum;
+      for (let i = 0; i < len; i++) {
+        // 第i位的状态已打成
+        if ((doneStatusNum >> (len - i - 1)) % 2 === 1) {
+          continue
         }
-        cacheMap[1] = 1
+        // 将第i个兽决改为打成
+        curStatusNum |= (1 << ((len - i) - 1));
+        // 遍历其他打成的兽决（n个）每个有1/len的概率被顶掉，累加这些被顶掉时的费用
+        let nextStatusNum = curStatusNum
+        for (let j = 0; j < len; j++) {
+          if (j === i) {
+            continue
+          }
+          // 第 j 本已打书
+          if ((curStatusNum >> (len - j - 1)) % 2 === 1) {
+            // 将第j个兽决改为未打成
+            nextStatusNum &= ~(1 << ((len - j) - 1));
+            if (this.priceCacheArr[nextStatusNum] === undefined) {
+              // 记录缓存这种情况的花费 depth > 50 ? 0 : this.avgFee(pricesArr, nextStatusNum, depth + 1)
+              console.log(depth)
+              this.priceCacheArr[nextStatusNum] = 50
+            }
+            // 打掉其他兽决后的费用
+            result += 1 / len * this.priceCacheArr[nextStatusNum]
+          }
+        }
+        // 打成这一本的费用
+        result += pricesArr[i]
       }
-      dfs(pricesArr, doneNum)
-      return 0;
+      return result;
     },
     calcShoujuePrice() {
       if (this.status === 1) {
         return
       }
+      this.priceCacheArr = []
       // 价格列表
-      let pricesArr = this.formData.prices.split(",").filter(i => i !== "")
+      let pricesArr = this.formData.prices.split(",").filter(i => i !== "").map(i => parseInt(i))
       // 需要打的数量
       let numToDo = pricesArr.length
       // 初始打成数量
@@ -115,7 +140,8 @@ export default {
       this.formData.result = "计算中..."
       let that = this
       new Promise((resolve => {
-        let fee = that.avgFee(pricesArr, parseInt(this.formData.initStatus, 2))
+        let fee = that.avgFee(pricesArr, parseInt(this.formData.initStatus, 2)).toFixed(2)
+        console.log(this.priceCacheArr)
         let canPutNum = that.formData.num - that.formData.specials;
         let shoujueNum = 0
         for (let i = numDone; i < numToDo; i++) {
