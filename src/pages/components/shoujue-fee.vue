@@ -1,7 +1,7 @@
 <template>
   <el-card class="box-card">
     <div slot="header" class="clearfix">
-      <span>梦幻打书花费计算</span>
+      <span>打书花费计算</span>
       <el-button style="float: right; padding: 3px 0" @click="calcShoujuePrice" type="text">计算</el-button>
     </div>
     <el-form ref="shoujueFeeForm" :model="formData" :rules="rules">
@@ -72,8 +72,7 @@ export default {
         specials: 0,
         num: 4,
         initStatus: "0000"
-      },
-      priceCacheArr: []
+      }
     }
   },
   methods: {
@@ -82,46 +81,45 @@ export default {
       this.formData.num = priceArr.length + this.formData.specials;
       this.formData.initStatus = "0".repeat(priceArr.length);
     },
+    // 效率太低
     avgFee(pricesArr, doneStatusNum, depth = 0) {
       const len = pricesArr.length;
+      if (depth >= 10 || doneStatusNum === ((1 << len1) - 1)) {
+        // 同一本书会被顶的次数大于10就不再统计 或者打完
+        return 0
+      }
       let result = 0
       let curStatusNum = doneStatusNum;
-      for (let i = 0; i < len; i++) {
-        // 第i位的状态已打成
-        if ((doneStatusNum >> (len - i - 1)) % 2 === 1) {
+      let i = 0
+      while (i < len && (doneStatusNum >> (len1 - i - 1)) % 2 === 1){
+        i += 1
+      }
+      // 把这本改为打成
+      curStatusNum |= (1 << ((len1 - i) - 1))
+      result += pricesArr[i]
+      let putNum = 0
+      for (let j = 0; j < len; j++) {
+        if (j === i) {
+          // 跳过刚打的这本
           continue
         }
-        // 将第i个兽决改为打成
-        curStatusNum |= (1 << ((len - i) - 1));
-        // 遍历其他打成的兽决（n个）每个有1/len的概率被顶掉，累加这些被顶掉时的费用
-        let nextStatusNum = curStatusNum
-        for (let j = 0; j < len; j++) {
-          if (j === i) {
-            continue
-          }
-          // 第 j 本已打书
-          if ((curStatusNum >> (len - j - 1)) % 2 === 1) {
-            // 将第j个兽决改为未打成
-            nextStatusNum &= ~(1 << ((len - j) - 1));
-            if (this.priceCacheArr[nextStatusNum] === undefined) {
-              // 记录缓存这种情况的花费 depth > 50 ? 0 : this.avgFee(pricesArr, nextStatusNum, depth + 1)
-              console.log(depth)
-              this.priceCacheArr[nextStatusNum] = 50
-            }
-            // 打掉其他兽决后的费用
-            result += 1 / len * this.priceCacheArr[nextStatusNum]
-          }
+        // 打掉了的情况的补书
+        if ((curStatusNum >> (len1 - i - 1)) % 2 === 1) {
+          putNum += 1
+          let newStatusNum = curStatusNum & ~(1 << ((len1 - j) - 1))
+          let fee = this.avgFee(pricesArr, newStatusNum, depth + 1)
+          result += (fee / len1)
         }
-        // 打成这一本的费用
-        result += pricesArr[i]
       }
-      return result;
+      // 打成
+      let fee = this.avgFee(pricesArr, curStatusNum, depth)
+      result += (fee * (len1 - putNum) / len1)
+      return result
     },
     calcShoujuePrice() {
       if (this.status === 1) {
         return
       }
-      this.priceCacheArr = []
       // 价格列表
       let pricesArr = this.formData.prices.split(",").filter(i => i !== "").map(i => parseInt(i))
       // 需要打的数量

@@ -1,7 +1,7 @@
 <template>
   <el-card class="box-card">
     <div slot="header" class="clearfix">
-      <span>梦幻最少兽决数计算</span>
+      <span>最少兽决数计算</span>
       <el-button style="float: right; padding: 3px 0" @click="calcShoujue" type="text">计算</el-button>
     </div>
     <el-form ref="shoujueNumForm" :model="formData" :inline="true">

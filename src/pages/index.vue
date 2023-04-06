@@ -1,15 +1,17 @@
 <template>
   <div class="index">
     <shoujue-num />
-    <shoujue-fee />
+    <!--效率太低先不加-->
+    <!--<shoujue-fee />-->
+    <hechong />
   </div>
 </template>
 <script>
-import shoujueFee from "./components/shoujue-fee";
 import shoujueNum from "./components/shoujue-num";
+import hechong from "./components/hechong";
 
 export default {
-  components: {shoujueFee, shoujueNum},
+  components: {shoujueNum, hechong},
   data() {
     return {
     }
