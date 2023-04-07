@@ -11,9 +11,9 @@ Vue.use(VueRouter);
 const routes = [
     {
         path: "/",
-        component: game,
+        component: site,
         meta: {
-            title: "梦幻西游工具箱"
+            title: "主页"
         }
     },
     {
