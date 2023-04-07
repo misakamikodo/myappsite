@@ -4,14 +4,16 @@
     <!--效率太低先不加-->
     <!--<shoujue-fee />-->
     <hechong />
+    <wenshi />
   </div>
 </template>
 <script>
 import shoujueNum from "./components/shoujue-num";
 import hechong from "./components/hechong";
+import wenshi from "./components/wenshi";
 
 export default {
-  components: {shoujueNum, hechong},
+  components: {shoujueNum, hechong, wenshi},
   data() {
     return {
     }
