@@ -84,18 +84,18 @@ export default {
     // 效率太低
     avgFee(pricesArr, doneStatusNum, depth = 0) {
       const len = pricesArr.length;
-      if (depth >= 10 || doneStatusNum === ((1 << len1) - 1)) {
+      if (depth >= 10 || doneStatusNum === ((1 << len) - 1)) {
         // 同一本书会被顶的次数大于10就不再统计 或者打完
         return 0
       }
       let result = 0
       let curStatusNum = doneStatusNum;
       let i = 0
-      while (i < len && (doneStatusNum >> (len1 - i - 1)) % 2 === 1){
+      while (i < len && (doneStatusNum >> (len - i - 1)) % 2 === 1){
         i += 1
       }
       // 把这本改为打成
-      curStatusNum |= (1 << ((len1 - i) - 1))
+      curStatusNum |= (1 << ((len - i) - 1))
       result += pricesArr[i]
       let putNum = 0
       for (let j = 0; j < len; j++) {
@@ -104,16 +104,16 @@ export default {
           continue
         }
         // 打掉了的情况的补书
-        if ((curStatusNum >> (len1 - i - 1)) % 2 === 1) {
+        if ((curStatusNum >> (len - i - 1)) % 2 === 1) {
           putNum += 1
-          let newStatusNum = curStatusNum & ~(1 << ((len1 - j) - 1))
+          let newStatusNum = curStatusNum & ~(1 << ((len - j) - 1))
           let fee = this.avgFee(pricesArr, newStatusNum, depth + 1)
-          result += (fee / len1)
+          result += (fee / len)
         }
       }
       // 打成
       let fee = this.avgFee(pricesArr, curStatusNum, depth)
-      result += (fee * (len1 - putNum) / len1)
+      result += (fee * (len - putNum) / len)
       return result
     },
     calcShoujuePrice() {

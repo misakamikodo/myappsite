@@ -1,8 +1,8 @@
 <template>
   <div id="app">
-    <el-container style="height: 500px; border: 1px solid #eee">
-      <el-aside width="200px" style="background-color: rgb(238, 241, 246)">
-        <el-menu :router="true" :default-openeds="['game']" default-active="mhxy">
+    <el-container class="container">
+      <el-aside class="aside" width="200px">
+        <el-menu class="menu" :router="true" :default-openeds="['game']" default-active="mhxy">
           <template v-for="sub in menus">
             <el-submenu :key="sub.index" :index="sub.index">
               <template slot="title">{{ sub.title }}</template>
@@ -51,6 +51,19 @@ export default {
 
 <style lang="scss">
 #app {
+  height: 100%;
+}
+
+.container {
+  height: 100%;
+  border: 1px solid #eee
+}
+
+.aside {
+  background-color: rgb(238, 241, 246)
+}
+
+.menu {
   height: 100%;
 }
 </style>
