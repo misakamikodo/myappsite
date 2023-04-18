@@ -2,21 +2,20 @@
   <div class="index">
     <shoujue-num />
     <!--效率太低先不加-->
-<!--    <shoujue-fee />-->
+    <shoujue-fee />
     <hechong />
     <wenshi />
   </div>
 </template>
 <script>
 import shoujueNum from "./components/shoujue-num";
-// import shoujueFee from "./components/shoujue-fee";
+import shoujueFee from "./components/shoujue-fee";
 import hechong from "./components/hechong";
 import wenshi from "./components/wenshi";
 
 export default {
   components: {
-    shoujueNum, hechong, wenshi
-    // , shoujueFee
+    shoujueNum, hechong, wenshi, shoujueFee
   },
   data() {
     return {

@@ -6,7 +6,7 @@
     </div>
     <el-form ref="shoujueNumForm" :model="formData" :inline="true">
       <el-form-item label="主纹饰价格(k)">
-        <el-input-number type="number" :min="0" :max="100000" :step="1000" size="small"
+        <el-input-number type="number" :min="0" :max="100000" :step="1000" size="small" @change="mainPriceChange"
                          v-model="formData.mainPrice"></el-input-number>
       </el-form-item>
       <el-form-item label="纹饰总计条数">
@@ -49,6 +49,9 @@ export default {
     }
   },
   methods: {
+    mainPriceChange() {
+      this.formData.deputyPrice = this.formData.mainPrice;
+    },
     calc() {
       let earn = (this.formData.mainPrice + this.formData.deputyPrice) / 0.85 / 0.91
       let oneMore = this.formData.deputyNum / this.formData.totalNum * 0.7
