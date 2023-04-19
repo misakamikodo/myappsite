@@ -1,7 +1,6 @@
 <template>
   <div class="index">
     <shoujue-num />
-    <!--效率太低先不加-->
     <shoujue-fee />
     <hechong />
     <wenshi />

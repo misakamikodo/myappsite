@@ -8,19 +8,25 @@
       <el-form-item label="兽决价格列表" prop="prices">
         <el-input class="text-input" type="text" v-model="formData.prices" :validate-event="true" @change="pricesChange"
                   placeholder="请输入价格，英文逗号(,)分割"></el-input>
+        <p>
+          <a class="tpl" @click="changeTpl('ap')" title="法爆、魔心、法连、神佑、强壮、感知、反震、会心、协力、先发、驱鬼、招架">法宠模板</a>
+          <a class="tpl" @click="changeTpl('ad1')" title="连击、必杀、偷袭、神佑、强壮、反击、防御、突进、强力、招架、协力、敏捷">一刀模板</a>
+          <a class="tpl" @click="changeTpl('ad2')" title="必杀、偷袭、神佑、强壮、反击、防御、突进、感知、驱鬼、招架、协力、敏捷">连击模板</a>
+          <a class="tpl" @click="changeTpl('ad3')" title="隐身、连击、必杀、偷袭、神佑、驱鬼、突进、强力">隐攻模板</a>
+        </p>
       </el-form-item>
       <el-form-item label="特殊技能数">
         <el-input-number type="number" :min="0" :max="12" :step="1" size="small" v-model="formData.specials"
                          @change="pricesChange"
                          placeholder="请输入内容"></el-input-number>
       </el-form-item>
-      <el-form-item label="格子数">
-        <el-input-number type="number" :min="0" :max="12" :step="1" size="small" v-model="formData.num"
-                         placeholder="请输入数量"></el-input-number>
-      </el-form-item>
       <div>
-        此模块计算量较大，故已提前计算好公式系数，初始状态影响系数结果故不支持初始状态
+        此模块计算量较大，故已提前通过matlab计算好公式系数，因此不支持初始状态和空格子
       </div>
+      <!--      <el-form-item label="格子数">-->
+      <!--        <el-input-number type="number" :min="0" :max="12" :step="1" size="small" v-model="formData.num"-->
+      <!--                         placeholder="请输入数量"></el-input-number>-->
+      <!--      </el-form-item>-->
       <!--      <el-form-item label="初始打书对应二进制状态" prop="initStatus">-->
       <!--        <el-input class="small-text-input" width="200" type="text" :validate-event="true" v-model="formData.initStatus"-->
       <!--                  placeholder="对应输入兽决价格 1有0无"></el-input>-->
@@ -65,11 +71,21 @@ export default {
         initStatus: [
           {
             validator: validInitStatus, trigger: 'blur'
-          },
+          }
         ]
       },
       status: 0,
       result: "",
+      tpl: {
+        // 连击、必杀、偷袭、神佑、强壮、反击、防御、突进、强力、招架、协力、敏捷
+        ad1: [9, 9, 6, 30, 30, 1, 2.5, 3, 2.5, 3, 9, 5],
+        // 必杀、偷袭、神佑、强壮、反击、防御、突进、感知、驱鬼、招架、协力、敏捷
+        ad2: [9, 6, 30, 30, 1, 2.5, 3, 3, 4, 9, 5],
+        // 隐身、连击、必杀、偷袭、神佑、驱鬼、突进、强力
+        ad3: [10, 9, 9, 6, 30, 3, 2.5, 2.5],
+        // 法爆、魔心、法连、神佑、强壮、感知、反震、会心、协力、先发、驱鬼、招架
+        ap: [19, 18, 18, 30, 30, 3, 6, 3, 9, 4, 4],
+      },
       formData: {
         prices: "10,20,30,40",
         specials: 0,
@@ -79,6 +95,10 @@ export default {
     }
   },
   methods: {
+    changeTpl(tpl) {
+      let priceArr = this.formData.prices.split(",").filter(i => i !== "");
+      this.formData.prices = this.tpl[tpl].slice(0, Math.min(priceArr.length, this.tpl[tpl].length)).sort((a, b) => a - b).join(",")
+    },
     pricesChange() {
       let priceArr = this.formData.prices.split(",").filter(i => i !== "");
       this.formData.num = priceArr.length + this.formData.specials;
@@ -114,9 +134,28 @@ export default {
             2.24993097781346 * args[7] +
             1.79993097756686 * args[8]
       } else if (args.length === 10) {
-        return null
+        return 3.57152371289302 * args[0] +
+            3.48061462198393 * args[1] +
+            3.37960452097383 * args[2] +
+            3.26596815733747 * args[3] +
+            3.13609802746734 * args[4] +
+            2.98458287595218 * args[5] +
+            2.80276469413400 * args[6] +
+            2.57549196686128 * args[7] +
+            2.27246166383094 * args[8] +
+            1.81791620419299 * args[9]
       } else if (args.length === 11) {
-        return null
+        return 3.68408940156693 * args[0] +
+            3.60075606823359 * args[1] +
+            3.50908940156693 * args[2] +
+            3.40723754971508 * args[3] +
+            3.29265421638174 * args[4] +
+            3.16170183542936 * args[5] +
+            3.00892405765158 * args[6] +
+            2.82559072431825 * args[7] +
+            2.59642405765158 * args[8] +
+            2.29086850209404 * args[9] +
+            1.83253511046140 * args[10]
       } else if (args.length === 12) {
         return null
       }
@@ -199,6 +238,8 @@ export default {
 }
 </script>
 
-<style scoped>
-
+<style lang="scss" scoped>
+.tpl{
+  margin-right: $spacing-row-sm;
+}
 </style>
