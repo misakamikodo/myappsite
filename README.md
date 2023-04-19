@@ -1,5 +1,8 @@
-# my-blog [应用页](https://app.bonelf.com)
+# my-blog 
 
+[应用页](https://app.bonelf.com)
+
+[平台 Netlify](https://app.netlify.com)
 ## Project setup
 ```
 npm install
