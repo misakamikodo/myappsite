@@ -2,7 +2,7 @@
   <div id="app">
     <el-container class="container">
       <el-aside class="aside" width="200px">
-        <el-menu class="menu" :router="true" :default-openeds="['game']" default-active="mhxy">
+        <el-menu class="menu" :router="true" :default-openeds="['gain','game']" default-active="site">
           <template v-for="sub in menus">
             <el-submenu :key="sub.index" :index="sub.index">
               <template slot="title">{{ sub.title }}</template>
@@ -27,19 +27,23 @@ export default {
       menus: [
         {
           index: "gain",
-          title: "知识",
-          childen: [{
-            index: "site",
-            title: "网站"
-          }]
+          title: "仕事",
+          childen: [
+            {
+              index: "site",
+              title: "网站"
+            }
+          ]
         },
         {
           index: "game",
-          title: "游戏",
-          childen: [{
-            index: "mhxy",
-            title: "梦幻西游"
-          }]
+          title: "娱乐",
+          childen: [
+            {
+              index: "mhxy",
+              title: "梦幻西游"
+            }
+          ]
         }
       ]
     }
@@ -51,7 +55,6 @@ export default {
 
 <style lang="scss">
 #app {
-  height: 100%;
 }
 
 .container {

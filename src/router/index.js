@@ -13,8 +13,12 @@ const routes = [
         path: "/",
         component: site,
         meta: {
-            title: "主页"
+            title: "我的应用"
         }
+    },
+    {
+        path: "/home",
+        redirect: ""
     },
     {
         path: "/mhxy",
@@ -27,12 +31,8 @@ const routes = [
         path: "/site",
         component: site,
         meta: {
-            title: "网站工具箱"
+            title: "库"
         }
-    },
-    {
-        path: "/home",
-        redirect: ""
     }
 ];
 

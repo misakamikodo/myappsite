@@ -1,0 +1,149 @@
+[
+  {
+    "title": "素材库",
+    "children": [
+      {
+        "site": "https://www.iconfont.cn",
+        "title": "阿里矢量图标"
+      }
+    ]
+  },
+  {
+    "title": "工具",
+    "children": [
+      {
+        "site": "https://www.photopea.com",
+        "icon": "https://www.photopea.com/promo/icon512.png",
+        "title": "Photopea 在线PS"
+      },
+      {
+        "site": "https://www.processon.com/diagrams",
+        "title": "processon"
+      }
+    ]
+  },
+  {
+    "title": "开发平台",
+    "children": [
+      {
+        "site": "https://portal.qiniu.com/kodo/bucket",
+        "title": "七牛云"
+      }
+    ]
+  },
+  {
+    "title": "论坛",
+    "children": [
+      {
+        "site": "https://stackoverflow.com",
+        "title": "stackoverflow"
+      }
+    ]
+  },
+  {
+    "title": "Maven 仓库",
+    "children": [
+      {
+        "site": "https://mvnrepository.com",
+        "title": "mvn repository"
+      },
+      {
+        "site": "https://developer.aliyun.com/mvn/search",
+        "title": "阿里仓库服务"
+      },
+      {
+        "site": "https://jitpack.io/",
+        "title": "JitPack"
+      }
+    ]
+  },
+  {
+    "title": "服务器",
+    "children": [
+      {
+        "site": "https://www.kubernetes.org.cn/k8s",
+        "title": "k8s"
+      }
+    ]
+  },
+  {
+    "title": "Spring 集成框架",
+    "children": [
+      {
+        "site": "https://mybatis.plus/guide/#特性",
+        "title": "mybatis plus"
+      },
+      {
+        "site": "https://apidoc.gitee.com/loolly/hutool/",
+        "title": "hutool"
+      }
+    ]
+  },
+  {
+    "title": "Spring 脚手架",
+    "children": [
+      {
+        "site": "https://springboot.plus/guide/quick-start.html",
+        "title": "spring-boot-plus"
+      }
+    ]
+  },
+  {
+    "title": "前端",
+    "children": [
+      {
+        "site": "https://echarts.apache.org/zh/option.html#graphic",
+        "title": "echart"
+      },
+      {
+        "site": "http://fontawesome.dashgame.com/",
+        "title": "fontawesome CSS框架"
+      },
+      {
+        "site": "https://v3.bootcss.com/",
+        "title": "Bootstrap"
+      },
+      {
+        "site": "https://www.jeasyui.net/plugins/",
+        "title": "Easy ui"
+      },
+      {
+        "site": "https://www.jq22.com/yanshi819",
+        "title": "Animate.css"
+      }
+    ]
+  },
+  {
+    "title": "Vue库",
+    "children": [
+      {
+        "site": "https://element.eleme.cn/#/zh-CN/component/divider",
+        "title": "element-ui开发文档"
+      },
+      {
+        "site": "https://www.cntofu.com/book/133/api.md",
+        "title": "API-vue"
+      },
+      {
+        "site": "https://cli.vuejs.org/config/#transpiledependencies",
+        "title": "vue-cli"
+      },
+      {
+        "site": "https://www.kancloud.cn/yunye/axios/234845",
+        "title": "axios"
+      },
+      {
+        "site": "https://router.vuejs.org/zh/api/",
+        "title": "vueRouter"
+      },
+      {
+        "site": "https://uniapp.dcloud.io",
+        "title": "uni-app"
+      },
+      {
+        "site": "https://segmentfault.com/a/1190000015151483",
+        "title": "开源组件"
+      }
+    ]
+  }
+]
