@@ -8,18 +8,19 @@
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
-    "vue": "^2.6.11",
-    "vue-router": "3.0.7",
-    "vuex": "^3.1.2",
-    "axios": "^0.19.2",
     "animate.css": "^3.6.1",
     "async-validator": "^3.2.3",
+    "axios": "^0.19.2",
     "core-js": "^3.6.4",
     "element-ui": "^2.3.3",
+    "mockjs": "^1.1.0",
     "stylus": "0.52.4",
     "stylus-loader": "^3.0.1",
     "verify5-vue": "^2.3.6",
-    "vue-concise-slider": "^4.2.5"
+    "vue": "^2.6.11",
+    "vue-concise-slider": "^4.2.5",
+    "vue-router": "3.0.7",
+    "vuex": "^3.1.2"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.2.0",

@@ -1,7 +1,14 @@
 module.exports = {
-    // publicPath: '/my-intro',
+    publicPath: '/',
+    outputDir: 'dist',
     devServer: {
         port: 8080,
+        open: true,
+        overlay: {
+            warnings: false,
+            errors: true
+        },
+        before: require('./mock/mock-server.js')
     },
     css: {
         loaderOptions: {
