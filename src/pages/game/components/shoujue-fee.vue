@@ -10,8 +10,8 @@
                   placeholder="请输入价格，英文逗号(,)分割"></el-input>
         <p>
           <a class="tpl" @click="changeTpl('ap')" title="法爆、魔心、法连、神佑、强壮、感知、反震、会心、协力、先发、驱鬼、招架">法宠模板</a>
-          <a class="tpl" @click="changeTpl('ad1')" title="连击、必杀、偷袭、神佑、强壮、反击、防御、突进、强力、招架、协力、敏捷">一刀模板</a>
-          <a class="tpl" @click="changeTpl('ad2')" title="必杀、偷袭、神佑、强壮、反击、防御、突进、感知、驱鬼、招架、协力、敏捷">连击模板</a>
+          <a class="tpl" @click="changeTpl('ad1')" title="连击、必杀、偷袭、神佑、强壮、反击、防御、突进、强力、招架、协力、敏捷">连击模板</a>
+          <a class="tpl" @click="changeTpl('ad2')" title="必杀、偷袭、神佑、强壮、反击、防御、突进、感知、驱鬼、招架、协力、敏捷">一刀模板</a>
           <a class="tpl" @click="changeTpl('ad3')" title="隐身、连击、必杀、偷袭、神佑、驱鬼、突进、强力">隐攻模板</a>
         </p>
       </el-form-item>

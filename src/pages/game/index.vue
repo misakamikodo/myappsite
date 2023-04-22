@@ -26,7 +26,7 @@ export default {
   }
 }
 </script>
-<style lang="scss">
+<style lang="scss" scoped>
 .index {
   line-height: 40px;
   padding: 10px;

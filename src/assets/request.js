@@ -1,4 +1,4 @@
-import axios from 'axios';  //commonJS规范 import是ES6 规范
+import axios from 'axios'; //commonJS规范 import是ES6 规范
 /**
  * 对axios的封装
  * @param config url or config
@@ -6,7 +6,7 @@ import axios from 'axios';  //commonJS规范 import是ES6 规范
  */
 const request = axios.create();
 
-request.defaults.baseURL = process.env.NODE_ENV === "production" ? window.location.origin : window.location.origin;
+request.defaults.baseURL = process.env.NODE_ENV === "production" ? window.location.origin : window.location.origin + "/dev-api";
 request.defaults.timeout = 5000;
 request.defaults.headers.post['Content-Type'] = 'application/json';
 
