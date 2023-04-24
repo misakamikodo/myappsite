@@ -38,7 +38,7 @@ export default {
 </script>
 <style lang="scss" scoped>
 .index {
-  width: 100%;
+  width: calc(100% - 250px);
 }
 
 .el-row {
