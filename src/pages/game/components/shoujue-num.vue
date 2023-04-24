@@ -58,7 +58,7 @@ export default {
         let canPutNum = that.formData.num - that.formData.specials;
         let shoujueNum = 0
         for (let i = that.formData.numDone; i < that.formData.numToDo; i++) {
-          shoujueNum = that.formData.num / (that.formData.num - i) + shoujueNum
+          shoujueNum = canPutNum / (canPutNum - i) + shoujueNum
         }
         let spend = shoujueNum.toFixed(2);
         let rate = (Math.pow(canPutNum / that.formData.num, shoujueNum) * 100).toFixed(2);
