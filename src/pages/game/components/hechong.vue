@@ -107,7 +107,7 @@ export default {
         for (let i = rateArr.length - 1; i >= 0 && rateArr[i] !== undefined; i--) {
           let item = rateArr[i]
           sumRate += item
-          res += `${Number(i) + this.formData.mainMustBeNum}: ${(item).toFixed(2)}(${sumRate.toFixed(2)})%; `
+          res += `${Number(i) + this.formData.deputyMustBeNum}: ${(item).toFixed(2)}(${sumRate.toFixed(2)})%; `
         }
       }
       this.result = res
